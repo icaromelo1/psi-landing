@@ -6,6 +6,8 @@ export default defineConfig(() => {
 
     css: ['app.css'],
 
+    htmlVariables: { naoIndexar: Boolean(process.env.NOINDEX) },
+
     extras: [],
 
     build: {

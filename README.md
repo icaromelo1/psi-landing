@@ -80,6 +80,34 @@ O CSS base do Quasar responde por quase todo o CSS, mesmo sem nenhum componente 
 
 ## Deploy
 
+Está no ar em **https://icaromelodev.com.br/referencia-projeto-psicologo/** como material de referência para o psicólogo avaliar.
+
+A VM Oracle (`ssh dsg-vm`) não usa nginx no host: tudo é container atrás do **Traefik v3.7**, um por site, no padrão de `~/projects/<nome>/` com `docker-compose.yml` + `nginx.conf` + `site/`. Este projeto segue a mesma receita do `wild`, que também é um SPA Quasar em subpath.
+
+### Publicar uma nova versão
+
+```bash
+NOINDEX=1 PUBLIC_PATH=/referencia-projeto-psicologo/ npm run build
+tar czf - -C dist/spa . | ssh dsg-vm 'tar xzf - -C ~/projects/psi-landing/site/'
+ssh dsg-vm 'find ~/projects/psi-landing/site \( -name "._*" -o -name ".DS_Store" \) -delete'
+```
+
+O `tar` do macOS leva metadados AppleDouble junto; a terceira linha limpa isso. O container serve o volume direto, então não precisa reiniciar — só recarregar a página.
+
+`PUBLIC_PATH` é obrigatório: sem ele os assets apontam para a raiz do domínio e o site quebra dentro do subpath. O Traefik remove o prefixo (`stripprefix`) antes de repassar ao nginx, então os arquivos ficam na raiz de `site/`.
+
+### Sobre o `NOINDEX`
+
+Enquanto os dados forem placeholder, **mantenha `NOINDEX=1`**. Ele injeta `<meta name="robots" content="noindex, nofollow">`, e o `nginx.conf` reforça com o header `X-Robots-Tag`. O motivo é concreto: a página traz um JSON-LD do tipo `ProfessionalService` com CRP fictício — indexar isso associaria uma credencial inexistente a um profissional real nos buscadores.
+
+Quando for para o domínio definitivo com os dados reais, buildar **sem** `NOINDEX` e remover o `add_header X-Robots-Tag` do `nginx.conf`.
+
+### Domínio próprio
+
+Ao migrar para o domínio final, o compose muda para uma regra por Host, sem `PathPrefix` nem `stripprefix` (o padrão do `portfolio` e do `littleclock`), e o build dispensa o `PUBLIC_PATH`.
+
+### Se preferir nginx no host
+
 Build estático servido por nginx na Oracle server:
 
 ```nginx
