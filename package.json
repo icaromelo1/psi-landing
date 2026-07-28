@@ -1,0 +1,53 @@
+{
+  "name": "psi-landing",
+  "version": "0.1.0",
+  "description": "Landing page de psicologia clínica — TCC e Terapia do Esquema",
+  "author": "Icaro Melo",
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "lint": "eslint --ext .js,.ts,.vue src/",
+    "lint:fix": "eslint --ext .js,.ts,.vue src/ --fix",
+    "format": "prettier --write \"src/**/*.{js,ts,vue,css}\"",
+    "typecheck": "vue-tsc --noEmit",
+    "contraste": "python3 tools/check-contrast.py",
+    "prepare": "husky",
+    "postinstall": "quasar prepare"
+  },
+  "dependencies": {
+    "quasar": "^2.16.0",
+    "vue": "^3.4.0",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@quasar/app-vite": "^2.0.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "axe-core": "^4.12.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.3.0",
+    "typescript": "^5.4.0",
+    "vite": "^5.0.0",
+    "vue-tsc": "^2.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{js,json,css}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

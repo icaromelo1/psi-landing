@@ -1,0 +1,233 @@
+[data-theme='c1'] {
+  --bg: #faf3e3;
+  --surface: #fffcf3;
+  --ink: #2c3a34;
+  --ink-soft: #5a6660;
+  --primary: #1f6e63;
+  --accent: #e8a33d;
+  --accent-ink: #2c3a34;
+  --border: #d9cdb4;
+  --radius: 999px;
+  --border-width: 1.5px;
+  --shadow: 0 3px 14px rgba(44, 58, 52, 0.1);
+  --rainbow: linear-gradient(90deg, #c0392b, #d97c1d, #b8960c, #1f7a4d, #2c5fa8, #7b4fa3);
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 600;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+[data-theme='c2'] {
+  --bg: #eff3e2;
+  --surface: #f8faef;
+  --ink: #37301f;
+  --ink-soft: #635942;
+  --primary: #47681f;
+  --accent: #a63d63;
+  --accent-ink: #ffffff;
+  --border: #d3dcbc;
+  --radius: 18px;
+  --border-width: 1.5px;
+  --shadow: 0 3px 14px rgba(55, 48, 31, 0.1);
+  --rainbow: linear-gradient(90deg, #b4443a, #c97b24, #a98b17, #4a8a3f, #3c6e9e, #8a5ba6);
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Nunito Sans', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+[data-theme='c3'] {
+  --bg: #e8f2f7;
+  --surface: #f6fafc;
+  --ink: #1f3345;
+  --ink-soft: #4e6072;
+  --primary: #1f638f;
+  --accent: #d98a24;
+  --accent-ink: #1f3345;
+  --border: #c7dce7;
+  --radius: 16px;
+  --border-width: 1.5px;
+  --shadow: 0 3px 14px rgba(31, 51, 69, 0.1);
+  --rainbow: linear-gradient(90deg, #c25048, #d08a2e, #b09a22, #3e8a5a, #3b72b0, #8464b2);
+  --font-display: 'Quicksand', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+[data-theme='c4'] {
+  --bg: #f4effa;
+  --surface: #fbf8fe;
+  --ink: #33254a;
+  --ink-soft: #5c4e73;
+  --primary: #61479b;
+  --accent: #61479b;
+  --accent-ink: #ffffff;
+  --border: #ddd0ee;
+  --radius: 16px;
+  --border-width: 1.5px;
+  --shadow: 0 3px 14px rgba(51, 37, 74, 0.1);
+  --rainbow: linear-gradient(90deg, #b84a6e, #c4762a, #a8901c, #3e8a5a, #4468b8, #8a54b8);
+  --font-display: 'Comfortaa', system-ui, sans-serif;
+  --font-body: 'Lexend', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+[data-theme='c5'] {
+  --bg: #fffdf4;
+  --surface: #ffffff;
+  --ink: #1e2433;
+  --ink-soft: #4c5468;
+  --primary: #2b4c9b;
+  --accent: #f6c445;
+  --accent-ink: #1e2433;
+  --border: #1e2433;
+  --radius: 12px;
+  --border-width: 2.5px;
+  --shadow: 4px 4px 0 var(--border);
+  --rainbow: linear-gradient(90deg, #e4572e, #f6c445, #3e8a5a, #2b4c9b, #8a54b8);
+  --font-display: 'Bungee', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 0.86;
+  --display-weight: 400;
+  --display-tracking: 0.01em;
+  --texture: radial-gradient(rgba(30, 36, 51, 0.09) 1.5px, transparent 1.5px);
+}
+
+[data-theme='e1'] {
+  --bg: #14242e;
+  --surface: #1d3140;
+  --ink: #f1e8d6;
+  --ink-soft: #b9c6c9;
+  --primary: #5fbfa5;
+  --accent: #e8a33d;
+  --accent-ink: #14242e;
+  --border: #2e4757;
+  --radius: 999px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  --rainbow: linear-gradient(90deg, #e07a6b, #e8a33d, #d6c04c, #63b87a, #6fa8dc, #a98bd8);
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 600;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+[data-theme='e2'] {
+  --bg: #201812;
+  --surface: #2c221a;
+  --ink: #eedfc7;
+  --ink-soft: #bfae95;
+  --primary: #d9a441;
+  --accent: #d9a441;
+  --accent-ink: #201812;
+  --border: #453626;
+  --radius: 10px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(0, 0, 0, 0.4);
+  --rainbow: linear-gradient(90deg, #c4552f, #d9a441, #c9b23c, #6fa05a, #5d82ae, #9a6fb8);
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'Alegreya Sans', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: 0.02em;
+  --texture: none;
+}
+
+[data-theme='e3'] {
+  --bg: #101a2e;
+  --surface: #1a2740;
+  --ink: #e4ebf7;
+  --ink-soft: #aebbd1;
+  --primary: #a08be8;
+  --accent: #f5c34d;
+  --accent-ink: #101a2e;
+  --border: #2b3b58;
+  --radius: 12px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  --rainbow: linear-gradient(90deg, #e0708a, #f5c34d, #d6c96a, #6fc493, #7ba3e8, #a08be8);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: -0.01em;
+  --texture: none;
+}
+
+[data-theme='e4'] {
+  --bg: #191428;
+  --surface: #221b36;
+  --ink: #efe9f7;
+  --ink-soft: #bfb4d4;
+  --primary: #f5afd6;
+  --accent: #a9e9d8;
+  --accent-ink: #17221f;
+  --border: #3a3153;
+  --radius: 10px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(169, 233, 216, 0.14);
+  --rainbow: linear-gradient(90deg, #f5afd6, #f7d9a0, #dcefa6, #a9e9d8, #a9cdf2, #c9b8f0);
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Karla', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: 'Press Start 2P', ui-monospace, monospace;
+  --display-scale: 1;
+  --display-weight: 800;
+  --display-tracking: -0.01em;
+  --texture: none;
+}
+
+[data-theme='e5'] {
+  --bg: #121d17;
+  --surface: #1b2a21;
+  --ink: #e7efe2;
+  --ink-soft: #b0bfab;
+  --primary: #c9e265;
+  --accent: #c9e265;
+  --accent-ink: #121d17;
+  --border: #2b3f32;
+  --radius: 14px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  --rainbow: linear-gradient(90deg, #d8836e, #e0ac4c, #c9e265, #7bc48f, #6fa8b8, #a390c9);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Mulish', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 600;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+[data-fonte-legivel='sim'] {
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+}

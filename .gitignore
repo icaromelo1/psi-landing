@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+/dist
+/src-capacitor
+/src-cordova
+/.quasar
+/.vscode
+.eslintcache
+*.log
+.env
+.env.*
+public/axe-temporario.js
