@@ -1,0 +1,20 @@
+services:
+  psi-landing:
+    image: nginx:alpine
+    container_name: psi-landing
+    restart: unless-stopped
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks: [web]
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.psilanding.rule=(Host(`icaromelodev.com.br`) || Host(`www.icaromelodev.com.br`)) && PathPrefix(`/referencia-projeto-psicologo`)
+      - traefik.http.routers.psilanding.priority=100
+      - traefik.http.routers.psilanding.entrypoints=websecure
+      - traefik.http.routers.psilanding.tls.certresolver=le
+      - traefik.http.routers.psilanding.middlewares=psilanding-strip
+      - traefik.http.middlewares.psilanding-strip.stripprefix.prefixes=/referencia-projeto-psicologo
+      - traefik.http.services.psilanding.loadbalancer.server.port=80
+networks:
+  web: {external: true}
