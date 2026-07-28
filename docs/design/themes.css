@@ -1,0 +1,289 @@
+/* ============================================================
+   Temas da landing — fonte de verdade dos tokens visuais.
+   Vira src/css/themes.css quando o projeto Quasar for criado.
+
+   Trocar de tema: edite themePair em site.config.ts.
+     export const themePair = { light: 'c5', dark: 'e4' }
+
+   O composable useReadingPrefs escreve data-theme no <html>
+   com o id do tema ativo. Nenhum outro arquivo conhece cores.
+   ============================================================ */
+
+/* ---- Contrato de tokens ----------------------------------
+   Todo tema DEVE definir os tokens abaixo. Componentes usam
+   apenas estes nomes — nunca hex literal.
+
+   --bg          fundo da página
+   --surface     fundo de cards e painéis
+   --ink         texto principal
+   --ink-soft    texto secundário (mínimo AA sobre --bg)
+   --primary     links, eyebrows, bordas de chip
+   --accent      fundo do CTA
+   --accent-ink  texto sobre --accent
+   --border      bordas de card e divisores
+   --radius      raio padrão de card e botão
+   --border-width espessura de borda dos componentes
+   --shadow      sombra de card e CTA
+   --rainbow     gradiente do sinal LGBT+ (sublinhado do hero)
+   --font-display / --font-body / --font-eyebrow
+   --font-numeral  fonte dos números de etapa (aceita display
+                   decorativo demais para texto corrido)
+   --display-scale multiplicador do tamanho de título, para
+                   displays largos ou em caixa alta
+   --display-weight / --display-tracking
+   --texture     background-image ambiente (none quando não usa)
+
+   Regra fixa: --font-display nunca é usada em texto longo.
+   Títulos de card e perguntas da FAQ ficam em --font-body bold —
+   caixa alta e displays decorativos derrubam a legibilidade.
+   --------------------------------------------------------- */
+
+/* ======================= CLAROS ======================= */
+
+/* C1 · Mapa do Aventureiro — pergaminho, teal e âmbar */
+[data-theme="c1"] {
+  --bg: #FAF3E3;
+  --surface: #FFFCF3;
+  --ink: #2C3A34;
+  --ink-soft: #5A6660;
+  --primary: #1F6E63;
+  --accent: #E8A33D;
+  --accent-ink: #2C3A34;
+  --border: #D9CDB4;
+  --radius: 999px;
+  --border-width: 1.5px;
+  --shadow: 0 3px 14px rgba(44, 58, 52, .10);
+  --rainbow: linear-gradient(90deg, #C0392B, #D97C1D, #B8960C, #1F7A4D, #2C5FA8, #7B4FA3);
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 600;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+/* C2 · Vila Cozy — sálvia, folha e amora */
+[data-theme="c2"] {
+  --bg: #EFF3E2;
+  --surface: #F8FAEF;
+  --ink: #37301F;
+  --ink-soft: #635942;
+  --primary: #47681F;
+  --accent: #A63D63;
+  --accent-ink: #FFFFFF;
+  --border: #D3DCBC;
+  --radius: 18px;
+  --border-width: 1.5px;
+  --shadow: 0 3px 14px rgba(55, 48, 31, .10);
+  --rainbow: linear-gradient(90deg, #B4443A, #C97B24, #A98B17, #4A8A3F, #3C6E9E, #8A5BA6);
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Nunito Sans', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+/* C3 · Céu Aberto — céu claro, sol e pipa */
+[data-theme="c3"] {
+  --bg: #E8F2F7;
+  --surface: #F6FAFC;
+  --ink: #1F3345;
+  --ink-soft: #4E6072;
+  --primary: #1F638F;
+  --accent: #D98A24;
+  --accent-ink: #1F3345;
+  --border: #C7DCE7;
+  --radius: 16px;
+  --border-width: 1.5px;
+  --shadow: 0 3px 14px rgba(31, 51, 69, .10);
+  --rainbow: linear-gradient(90deg, #C25048, #D08A2E, #B09A22, #3E8A5A, #3B72B0, #8464B2);
+  --font-display: 'Quicksand', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+/* C4 · Grimório Gentil — lilás, violeta e ouro */
+[data-theme="c4"] {
+  --bg: #F4EFFA;
+  --surface: #FBF8FE;
+  --ink: #33254A;
+  --ink-soft: #5C4E73;
+  --primary: #61479B;
+  --accent: #61479B;
+  --accent-ink: #FFFFFF;
+  --border: #DDD0EE;
+  --radius: 16px;
+  --border-width: 1.5px;
+  --shadow: 0 3px 14px rgba(51, 37, 74, .10);
+  --rainbow: linear-gradient(90deg, #B84A6E, #C4762A, #A8901C, #3E8A5A, #4468B8, #8A54B8);
+  --font-display: 'Comfortaa', system-ui, sans-serif;
+  --font-body: 'Lexend', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+/* C5 · Banca de Quadrinhos — papel, tinta, retícula (ATIVO) */
+[data-theme="c5"] {
+  --bg: #FFFDF4;
+  --surface: #FFFFFF;
+  --ink: #1E2433;
+  --ink-soft: #4C5468;
+  --primary: #2B4C9B;
+  --accent: #F6C445;
+  --accent-ink: #1E2433;
+  --border: #1E2433;
+  --radius: 12px;
+  --border-width: 2.5px;
+  --shadow: 4px 4px 0 var(--border);
+  --rainbow: linear-gradient(90deg, #E4572E, #F6C445, #3E8A5A, #2B4C9B, #8A54B8);
+  --font-display: 'Bungee', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: .86;
+  --display-weight: 400;
+  --display-tracking: .01em;
+  --texture: radial-gradient(rgba(30, 36, 51, .09) 1.5px, transparent 1.5px);
+}
+
+/* ======================= ESCUROS ======================= */
+
+/* E1 · Fogueira de Acampamento — par natural do C1 */
+[data-theme="e1"] {
+  --bg: #14242E;
+  --surface: #1D3140;
+  --ink: #F1E8D6;
+  --ink-soft: #B9C6C9;
+  --primary: #5FBFA5;
+  --accent: #E8A33D;
+  --accent-ink: #14242E;
+  --border: #2E4757;
+  --radius: 999px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(0, 0, 0, .35);
+  --rainbow: linear-gradient(90deg, #E07A6B, #E8A33D, #D6C04C, #63B87A, #6FA8DC, #A98BD8);
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 600;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+/* E2 · Taverna do Aventureiro — madeira, vela e brasa */
+[data-theme="e2"] {
+  --bg: #201812;
+  --surface: #2C221A;
+  --ink: #EEDFC7;
+  --ink-soft: #BFAE95;
+  --primary: #D9A441;
+  --accent: #D9A441;
+  --accent-ink: #201812;
+  --border: #453626;
+  --radius: 10px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(0, 0, 0, .40);
+  --rainbow: linear-gradient(90deg, #C4552F, #D9A441, #C9B23C, #6FA05A, #5D82AE, #9A6FB8);
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-body: 'Alegreya Sans', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: .02em;
+  --texture: none;
+}
+
+/* E3 · Observatório — céu estrelado e constelações */
+[data-theme="e3"] {
+  --bg: #101A2E;
+  --surface: #1A2740;
+  --ink: #E4EBF7;
+  --ink-soft: #AEBBD1;
+  --primary: #A08BE8;
+  --accent: #F5C34D;
+  --accent-ink: #101A2E;
+  --border: #2B3B58;
+  --radius: 12px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(0, 0, 0, .35);
+  --rainbow: linear-gradient(90deg, #E0708A, #F5C34D, #D6C96A, #6FC493, #7BA3E8, #A08BE8);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 700;
+  --display-tracking: -.01em;
+  --texture: none;
+}
+
+/* E4 · Arcade Pastel — neon rebaixado a pastel (ATIVO) */
+[data-theme="e4"] {
+  --bg: #191428;
+  --surface: #221B36;
+  --ink: #EFE9F7;
+  --ink-soft: #BFB4D4;
+  --primary: #F5AFD6;
+  --accent: #A9E9D8;
+  --accent-ink: #17221F;
+  --border: #3A3153;
+  --radius: 10px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(169, 233, 216, .14);
+  --rainbow: linear-gradient(90deg, #F5AFD6, #F7D9A0, #DCEFA6, #A9E9D8, #A9CDF2, #C9B8F0);
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Karla', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: 'Press Start 2P', ui-monospace, monospace;
+  --display-scale: 1;
+  --display-weight: 800;
+  --display-tracking: -.01em;
+  --texture: none;
+}
+
+/* E5 · Floresta de Vagalumes — musgo, lanterna e vagalumes */
+[data-theme="e5"] {
+  --bg: #121D17;
+  --surface: #1B2A21;
+  --ink: #E7EFE2;
+  --ink-soft: #B0BFAB;
+  --primary: #C9E265;
+  --accent: #C9E265;
+  --accent-ink: #121D17;
+  --border: #2B3F32;
+  --radius: 14px;
+  --border-width: 1.5px;
+  --shadow: 0 6px 22px rgba(0, 0, 0, .35);
+  --rainbow: linear-gradient(90deg, #D8836E, #E0AC4C, #C9E265, #7BC48F, #6FA8B8, #A390C9);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Mulish', system-ui, sans-serif;
+  --font-eyebrow: var(--font-body);
+  --font-numeral: var(--font-display);
+  --display-scale: 1;
+  --display-weight: 600;
+  --display-tracking: 0;
+  --texture: none;
+}
+
+/* Corpo em Atkinson Hyperlegible, independente do tema.
+   Ligado pelo painel de preferências de leitura. */
+[data-legible-body="on"] {
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+}

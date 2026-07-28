@@ -42,19 +42,28 @@ Header fixo enxuto com âncoras + botão WhatsApp sempre visível.
 
 ## Estilo visual
 
-### Paleta (tema claro + escuro desde a v1)
+Dez temas foram desenhados e comparados em [2026-07-27-temas.html](2026-07-27-temas.html). Todos os dez ficam no repositório como tokens prontos; **dois estão ativos**:
 
-- Fundo: creme-pergaminho (claro) / azul-noite profundo (escuro)
-- Primária: teal/verde-floresta
-- Acento: âmbar quente (botões/CTA)
-- **Gradiente arco-íris discreto** como sinal LGBT+: usado com parcimônia (sublinhado do headline, borda de um card)
-- Todas as combinações validadas para contraste WCAG AA nos dois temas
+| | Tema ativo | Identidade |
+|---|---|---|
+| Claro | **C5 · Banca de Quadrinhos** | Papel creme, tinta azul-marinho, amarelo de HQ, retícula de pontos, bordas grossas com sombra sólida |
+| Escuro | **E4 · Arcade Pastel** | Roxo-noite suave, rosa e menta pastéis, sombra difusa. Versão rebaixada do neon original — pastel a pedido |
+
+O gradiente arco-íris (sinal LGBT+) aparece como sublinhado de uma única palavra do headline, com `white-space: nowrap` para nunca quebrar em duas linhas.
 
 ### Tipografia
 
-- Títulos: **Fredoka** (sans arredondada, remete a jogo cozy sem infantilizar); Nunito é o fallback já definido caso Fredoka pareça infantil demais na validação visual
-- Corpo: **Atkinson Hyperlegible** (desenhada para baixa visão — acessibilidade como posicionamento)
-- Corpo base 18px, entrelinha generosa, parágrafos curtos, largura de linha ~70ch
+| Papel | C5 (claro) | E4 (escuro) |
+|---|---|---|
+| Display | Bungee | Outfit 800 |
+| Corpo | Source Sans 3 | Karla |
+| Numerais | Bungee | Press Start 2P |
+
+**Regra fixa: `--font-display` nunca é usada em texto longo.** Títulos de card e perguntas da FAQ ficam em `--font-body` bold — Bungee é caixa alta e Press Start 2P é pixelada, e ambas derrubam a legibilidade fora de rótulos curtos. Press Start 2P sobrevive apenas nos numerais das etapas, onde carrega o clima arcade em um caractere.
+
+Corpo base 18px, entrelinha generosa, parágrafos curtos, largura de linha ~70ch. O token `--display-scale` compensa displays largos (C5 usa `.86`).
+
+**Atkinson Hyperlegible** deixa de ser a fonte de corpo padrão e vira uma opção do painel de leitura (`data-legible-body="on"`), que troca o corpo de qualquer tema pela fonte desenhada para baixa visão.
 
 ### Ilustrações e componentes temáticos
 
@@ -63,6 +72,23 @@ Header fixo enxuto com âncoras + botão WhatsApp sempre visível.
 - FAQ em acordeão estilo caixa de diálogo de jogo.
 - Botão WhatsApp grande, arredondado, com rótulo explícito ("Chamar no WhatsApp"), nunca só ícone.
 - Microanimações suaves (hover, revelar ao rolar), desligáveis e respeitando `prefers-reduced-motion` por padrão.
+
+### Arquitetura de temas
+
+`docs/design/themes.css` (vira `src/css/themes.css`) é a única fonte de cores e fontes do site. Cada tema é um bloco `[data-theme="id"]` que define o mesmo contrato de tokens semânticos (`--bg`, `--ink`, `--primary`, `--accent`, `--radius`, `--font-display`…). **Nenhum componente escreve hex literal.**
+
+Trocar de tema é uma linha:
+
+```ts
+// site.config.ts
+export const themePair = { light: 'c5', dark: 'e4' }
+```
+
+`useReadingPrefs` lê esse par, decide pelo modo ativo (claro/escuro/automático) e escreve `data-theme` no `<html>`. Os dez temas continuam disponíveis: trocar `'c5'` por `'c3'` repagina o site inteiro sem tocar em componente.
+
+Contrapartida assumida: as fontes self-hosted baixadas no build são as do par ativo. Trocar para um tema com outro par tipográfico exige baixar os woff2 correspondentes — documentado no README do projeto.
+
+`tools/check-contrast.py` valida os 7 pares de cor críticos de cada tema contra WCAG AA e falha o build abaixo de 4.5:1. Os dez temas passam hoje; C5 e E4 passam com folga de AAA (mínimo 7.4:1 e 8.4:1).
 
 ## Acessibilidade
 
@@ -78,6 +104,7 @@ Botão fixo com ícone + rótulo, abrindo painel com:
 2. **Tema** — claro / escuro / automático (padrão: `prefers-color-scheme`)
 3. **Animações** — ligadas / desligadas (padrão: `prefers-reduced-motion`)
 4. **Linguagem simples** — liga/desliga
+5. **Fonte de alta legibilidade** — troca o corpo do tema por Atkinson Hyperlegible (`data-legible-body`)
 
 Persistência em `localStorage`, aplicação sem reload (composable + CSS vars no `:root`).
 
@@ -92,10 +119,11 @@ Cada bloco de texto existe em duas variantes (`padrao` / `simples`) num arquivo 
 - **Componentes:** um por seção — `HeroSection`, `AudienceSection`, `HowItWorksSection`, `AboutSection`, `GuardiansSection`, `PoliciesSection`, `FaqSection`, `FinalCtaSection` — mais `ReadingPrefsPanel`.
 - **Transversais:**
   - `content.ts` — todo o copy, nas variantes padrão/simples
-  - `site.config.ts` — WhatsApp, Instagram, e-mail, CRP, nome (tudo que muda, num lugar só)
-  - `useReadingPrefs` — composable de tema/fonte/animação/linguagem → CSS vars + localStorage
+  - `site.config.ts` — WhatsApp, Instagram, e-mail, CRP, nome e `themePair` (tudo que muda, num lugar só)
+  - `themes.css` — os dez temas como blocos `[data-theme]`; única fonte de cor e fonte do site
+  - `useReadingPrefs` — composable de tema/fonte/animação/linguagem → `data-*` no `<html>` + localStorage
 - **Performance:** fontes self-hosted woff2 com `font-display: swap`; SVGs inline; lazy-load abaixo da dobra; orçamento < 300KB; Lighthouse ≥ 95 nas quatro categorias.
-- **Verificação:** axe-core automatizado no build + checklist manual (teclado, VoiceOver, zoom 200%, dois temas, duas linguagens). Sem E2E na v1.
+- **Verificação:** axe-core e `tools/check-contrast.py` automatizados no build + checklist manual (teclado, VoiceOver, zoom 200%, dois temas, duas linguagens). Sem E2E na v1.
 - **Deploy:** `quasar build` → estáticos no nginx. CI/CD futuro.
 
 ## Fora de escopo da v1

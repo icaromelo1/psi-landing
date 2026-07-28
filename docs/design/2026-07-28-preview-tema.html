@@ -1,0 +1,273 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview do tema — landing psi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Atkinson+Hyperlegible:wght@400;700&family=Baloo+2:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Quicksand:wght@500;700&family=Figtree:wght@400;600;700&family=Comfortaa:wght@500;700&family=Lexend:wght@300;400;600&family=Bungee&family=Source+Sans+3:wght@400;600;700&family=Cinzel:wght@600;700&family=Alegreya+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;700&family=Outfit:wght@500;800&family=Karla:wght@400;700&family=Press+Start+2P&family=Fraunces:opsz,wght@9..144,600&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="themes.css">
+
+<style>
+  /* ---------- barra de controle (não faz parte do site) ---------- */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .controls {
+    position: sticky; top: 0; z-index: 50;
+    background: #1B1B1F; color: #F2F1EE;
+    font-family: system-ui, sans-serif; font-size: .82rem;
+    padding: 12px 20px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+    border-bottom: 1px solid #35353B;
+  }
+  .controls label { display: flex; gap: 7px; align-items: center; white-space: nowrap; }
+  .controls select { font: inherit; padding: 5px 8px; border-radius: 7px; border: 1px solid #4A4A52; background: #26262B; color: inherit; }
+  .controls .flag { margin-left: auto; font-family: ui-monospace, monospace; font-size: .74rem; color: #A8A6B4; }
+  .controls code { background: #26262B; padding: 3px 7px; border-radius: 5px; color: #D9D6E8; }
+
+  /* ---------- página, 100% via tokens de themes.css ---------- */
+  .page {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--font-body); font-size: 18px; line-height: 1.6;
+    min-height: 100vh; padding-bottom: 60px;
+  }
+  .page::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: var(--texture); background-size: 11px 11px;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  .page h1, .page h2 {
+    font-family: var(--font-display); font-weight: var(--display-weight);
+    letter-spacing: var(--display-tracking); line-height: 1.24;
+  }
+  /* texto curto pode carregar o display; título de card e pergunta de FAQ, não */
+  .page h3, .page summary {
+    font-family: var(--font-body); font-weight: 700; line-height: 1.35;
+  }
+  .page .eyebrow {
+    font-family: var(--font-eyebrow); font-size: .76rem; font-weight: 700;
+    letter-spacing: .07em; text-transform: uppercase; color: var(--primary);
+  }
+  .page .rainbow {
+    background-image: var(--rainbow); background-repeat: no-repeat;
+    background-size: 100% 4px; background-position: 0 100%; padding-bottom: 5px;
+    white-space: nowrap;
+  }
+
+  .bar { display: flex; align-items: center; gap: 16px; padding: 18px 0; flex-wrap: wrap; }
+  .bar .logo { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 1.05rem; }
+  .bar nav { display: flex; gap: 18px; margin-left: auto; font-size: .92rem; flex-wrap: wrap; }
+  .bar nav a { color: var(--ink); text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 2px; }
+  .bar nav a:hover, .bar nav a:focus-visible { border-bottom-color: var(--primary); }
+
+  .hero { padding: 40px 0 52px; }
+  .hero h1 { font-size: calc(clamp(1.55rem, 4.2vw, 2.6rem) * var(--display-scale)); max-width: 19ch; margin: 14px 0 16px; }
+  .hero p { font-size: 1.08rem; max-width: 54ch; color: var(--ink-soft); margin-bottom: 24px; }
+  .chips { display: flex; gap: 9px; flex-wrap: wrap; margin-bottom: 26px; }
+  .chip {
+    font-size: .82rem; font-weight: 700; color: var(--primary);
+    border: var(--border-width) solid var(--primary); border-radius: var(--radius);
+    padding: 6px 14px;
+  }
+  .actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--font-body); font-weight: 700; font-size: 1.02rem;
+    background: var(--accent); color: var(--accent-ink);
+    border: var(--border-width) solid var(--border); border-radius: var(--radius);
+    padding: 15px 28px; box-shadow: var(--shadow); cursor: pointer; min-height: 48px;
+  }
+  .btn:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+  .links { display: flex; gap: 16px; font-size: .95rem; font-weight: 700; }
+  .links a { color: var(--primary); }
+  .credential { margin-top: 26px; font-size: .84rem; color: var(--ink-soft); }
+
+  .block { padding: 34px 0; }
+  .block > h2 { font-size: calc(clamp(1.25rem, 2.9vw, 1.7rem) * var(--display-scale)); margin-bottom: 20px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--surface); border: var(--border-width) solid var(--border);
+    border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
+  }
+  .card h3 { font-size: 1.02rem; margin-bottom: 7px; }
+  .card p { font-size: .93rem; color: var(--ink-soft); }
+
+  .steps { display: grid; gap: 14px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; }
+  .step .num {
+    flex: none; width: 42px; height: 42px; display: grid; place-items: center;
+    font-family: var(--font-numeral); font-weight: var(--display-weight); font-size: .88rem;
+    background: var(--accent); color: var(--accent-ink);
+    border: var(--border-width) solid var(--border); border-radius: var(--radius);
+  }
+  .step h3 { font-size: 1rem; margin-bottom: 3px; }
+  .step p { font-size: .93rem; color: var(--ink-soft); }
+
+  .faq { display: grid; gap: 12px; }
+  .faq details {
+    background: var(--surface); border: var(--border-width) solid var(--border);
+    border-radius: var(--radius); padding: 15px 18px;
+  }
+  .faq summary { font-size: .98rem; cursor: pointer; }
+  .faq summary:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+  .faq p { font-size: .93rem; color: var(--ink-soft); margin-top: 10px; }
+
+  .closing {
+    background: var(--surface); border: var(--border-width) solid var(--border);
+    border-radius: var(--radius); padding: 30px 26px; text-align: center; box-shadow: var(--shadow);
+  }
+  .closing h2 { font-size: calc(clamp(1.2rem, 2.7vw, 1.55rem) * var(--display-scale)); margin-bottom: 12px; }
+  .closing p { color: var(--ink-soft); margin-bottom: 22px; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="controls">
+  <label>Modo
+    <select id="mode">
+      <option value="light">☀️ claro</option>
+      <option value="dark">🌙 escuro</option>
+    </select>
+  </label>
+  <label>Tema claro
+    <select id="light">
+      <option value="c1">C1 · Mapa do Aventureiro</option>
+      <option value="c2">C2 · Vila Cozy</option>
+      <option value="c3">C3 · Céu Aberto</option>
+      <option value="c4">C4 · Grimório Gentil</option>
+      <option value="c5" selected>C5 · Banca de Quadrinhos</option>
+    </select>
+  </label>
+  <label>Tema escuro
+    <select id="dark">
+      <option value="e1">E1 · Fogueira</option>
+      <option value="e2">E2 · Taverna</option>
+      <option value="e3">E3 · Observatório</option>
+      <option value="e4" selected>E4 · Arcade Pastel</option>
+      <option value="e5">E5 · Vagalumes</option>
+    </select>
+  </label>
+  <label><input type="checkbox" id="legible"> corpo em Atkinson</label>
+  <span class="flag">site.config.ts → <code id="snippet"></code></span>
+</div>
+
+<div class="page">
+  <div class="wrap">
+
+    <header class="bar">
+      <span class="logo">Nome Sobrenome</span>
+      <nav>
+        <a href="#">Para quem é</a>
+        <a href="#">Como funciona</a>
+        <a href="#">Sobre mim</a>
+        <a href="#">Responsáveis</a>
+        <a href="#">Dúvidas</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Psicoterapia online · TCC e Terapia do Esquema</p>
+      <h1>Até quem salva o mundo precisa de <span class="rainbow">apoio</span>.</h1>
+      <p>Terapia direta, sem enrolação, para pessoas LGBT+, neurodivergentes, PCD e fãs de cultura pop. Dos 12 aos 60 anos.</p>
+      <div class="chips">
+        <span class="chip">LGBT+</span>
+        <span class="chip">Neurodivergências</span>
+        <span class="chip">PCD</span>
+        <span class="chip">Cultura pop</span>
+      </div>
+      <div class="actions">
+        <button class="btn">Chamar no WhatsApp</button>
+        <span class="links"><a href="#">Instagram</a><a href="#">E-mail</a></span>
+      </div>
+      <p class="credential">Nome Sobrenome · Psicólogo · CRP 00/000000</p>
+    </section>
+
+    <section class="block">
+      <h2>Para quem é</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Pessoas LGBT+</h3>
+          <p>Você não vai precisar explicar o básico nem se defender de julgamento aqui.</p>
+        </article>
+        <article class="card">
+          <h3>Neurodivergentes</h3>
+          <p>Sessões previsíveis, comunicação direta e respeito ao seu ritmo de processamento.</p>
+        </article>
+        <article class="card">
+          <h3>Pessoas com deficiência</h3>
+          <p>Atendimento adaptado ao que funciona para você, combinado antes de começar.</p>
+        </article>
+        <article class="card">
+          <h3>Fãs de cultura pop</h3>
+          <p>Games, animes e RPG entram na conversa quando ajudam a nomear o que você sente.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Como funciona a primeira sessão</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="num">1</span>
+          <div>
+            <h3>Você manda uma mensagem</h3>
+            <p>Conta em poucas linhas o que está buscando. Respondo em até 24 horas com os horários livres.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="num">2</span>
+          <div>
+            <h3>Marcamos a primeira conversa</h3>
+            <p>Cinquenta minutos por vídeo. Você recebe o link no dia anterior, sem precisar instalar nada.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <div>
+            <h3>Decidimos juntos o próximo passo</h3>
+            <p>No fim da sessão eu explico como seria a continuidade. Você decide depois, sem compromisso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Dúvidas frequentes</h2>
+      <div class="faq">
+        <details open>
+          <summary>Preciso ter um diagnóstico para começar?</summary>
+          <p>Não. Muita gente chega sem diagnóstico e sem saber nomear o que sente — isso faz parte do trabalho.</p>
+        </details>
+        <details>
+          <summary>E se eu travar e não souber o que falar?</summary>
+          <p>Acontece com frequência e não é problema. Eu conduzo a conversa com perguntas quando o silêncio pesa.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="closing">
+        <h2>Vamos começar?</h2>
+        <p>A primeira mensagem costuma ser a parte mais difícil. Depois dela, fica mais leve.</p>
+        <button class="btn">Chamar no WhatsApp</button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const mode = document.getElementById('mode');
+  const light = document.getElementById('light');
+  const dark = document.getElementById('dark');
+  const legible = document.getElementById('legible');
+  const snippet = document.getElementById('snippet');
+
+  function apply() {
+    root.dataset.theme = mode.value === 'dark' ? dark.value : light.value;
+    root.dataset.legibleBody = legible.checked ? 'on' : 'off';
+    snippet.textContent = `{ light: '${light.value}', dark: '${dark.value}' }`;
+  }
+
+  [mode, light, dark, legible].forEach(el => el.addEventListener('change', apply));
+  apply();
+</script>
