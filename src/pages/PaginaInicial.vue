@@ -50,7 +50,7 @@ import { rotulos } from 'src/conteudo';
 }
 
 .pular {
-  position: absolute;
+  position: fixed;
   left: var(--s-4);
   top: -100px;
   z-index: 40;
