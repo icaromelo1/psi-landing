@@ -1,0 +1,344 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prancheta de temas — landing psi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Baloo+2:wght@500;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&family=Quicksand:wght@500;700&family=Figtree:wght@400;600&family=Comfortaa:wght@500;700&family=Lexend:wght@300;400;600&family=Bungee&family=Source+Sans+3:wght@400;600&family=Cinzel:wght@600;700&family=Alegreya+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=Outfit:wght@500;800&family=Karla:wght@400;700&family=Press+Start+2P&family=Fraunces:opsz,wght@9..144,600&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #EDEBE7; color: #26241F; font-family: 'Figtree', system-ui, sans-serif; line-height: 1.55; }
+
+  .intro { max-width: 880px; margin: 0 auto; padding: 48px 24px 16px; }
+  .intro h1 { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 10px; }
+  .intro p { color: #55524A; max-width: 62ch; }
+  .section-title { max-width: 880px; margin: 40px auto 0; padding: 0 24px; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 1.25rem; color: #3A3831; }
+
+  /* ---------- estrutura de cada opção ---------- */
+  .option { max-width: 880px; margin: 24px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 14px rgba(30,28,22,.10); }
+
+  .theme { background: var(--bg); color: var(--ink); padding: 44px 36px 40px; position: relative; overflow: hidden; }
+  .theme .eyebrow { font-family: var(--body); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--primary); margin-bottom: 14px; }
+  .theme h2 { font-family: var(--display); font-weight: var(--display-weight, 600); font-size: clamp(1.5rem, 3.4vw, 2.1rem); line-height: 1.22; max-width: 21ch; margin-bottom: 14px; }
+  .theme h2 .ra { background-image: var(--rainbow); background-repeat: no-repeat; background-size: 100% 4px; background-position: 0 100%; padding-bottom: 5px; }
+  .theme .sub { font-family: var(--body); font-size: 1.02rem; max-width: 52ch; color: var(--ink); opacity: .92; margin-bottom: 22px; }
+  .theme .cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; }
+  .theme .cta { font-family: var(--body); font-weight: 700; font-size: 1rem; background: var(--accent); color: var(--accent-ink); border: none; padding: 14px 26px; border-radius: var(--radius, 999px); cursor: pointer; }
+  .theme .alt { font-family: var(--body); font-size: .9rem; color: var(--primary); font-weight: 700; }
+  .theme .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .theme .chip { font-family: var(--body); font-size: .8rem; font-weight: 700; border: 1.5px solid var(--primary); color: var(--primary); border-radius: var(--radius, 999px); padding: 5px 12px; }
+  .theme .crp { font-family: var(--body); font-size: .8rem; opacity: .65; }
+
+  .meta { background: #FFFFFF; padding: 18px 36px 22px; display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: flex-start; }
+  .meta .name { flex: 1 1 220px; }
+  .meta .name b { display: block; font-size: 1.02rem; }
+  .meta .name span { font-size: .85rem; color: #6B675D; }
+  .meta .fonts { flex: 1 1 200px; font-size: .85rem; color: #3A3831; }
+  .meta .fonts em { display: block; font-style: normal; color: #6B675D; font-size: .8rem; }
+  .meta .swatches { display: flex; gap: 6px; flex: 1 1 240px; }
+  .meta .sw { flex: 1; text-align: center; font-size: .62rem; color: #6B675D; }
+  .meta .sw i { display: block; height: 34px; border-radius: 8px; border: 1px solid rgba(0,0,0,.08); margin-bottom: 3px; }
+
+  @media (max-width: 640px) { .theme { padding: 32px 20px; } .meta { padding: 16px 20px 20px; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  /* ============ TEMAS CLAROS ============ */
+
+  .tL1 { --bg:#FAF3E3; --ink:#2C3A34; --primary:#1F6E63; --accent:#E8A33D; --accent-ink:#2C3A34;
+         --display:'Fredoka',sans-serif; --body:'Atkinson Hyperlegible',sans-serif;
+         --rainbow:linear-gradient(90deg,#C0392B,#D97C1D,#B8960C,#1F7A4D,#2C5FA8,#7B4FA3); }
+  .tL1 .trail { position:absolute; top:26px; right:32px; width:130px; border-top:3px dashed #1F6E6355; border-radius:2px; }
+
+  .tL2 { --bg:#EFF3E2; --ink:#37301F; --primary:#4A6B2A; --accent:#A63D63; --accent-ink:#FFFFFF;
+         --display:'Baloo 2',sans-serif; --display-weight:700; --body:'Nunito Sans',sans-serif;
+         --rainbow:linear-gradient(90deg,#B4443A,#C97B24,#A98B17,#4A8A3F,#3C6E9E,#8A5BA6); }
+
+  .tL3 { --bg:#E8F2F7; --ink:#1F3345; --primary:#2A6E9E; --accent:#D98A24; --accent-ink:#1F3345;
+         --display:'Quicksand',sans-serif; --display-weight:700; --body:'Figtree',sans-serif;
+         --rainbow:linear-gradient(90deg,#C25048,#D08A2E,#B09A22,#3E8A5A,#3B72B0,#8464B2); }
+  .tL3 .kite { position:absolute; top:20px; right:36px; font-size:1.5rem; opacity:.7; }
+
+  .tL4 { --bg:#F4EFFA; --ink:#33254A; --primary:#6B4FA3; --accent:#6B4FA3; --accent-ink:#FFFFFF;
+         --display:'Comfortaa',sans-serif; --display-weight:700; --body:'Lexend',sans-serif;
+         --rainbow:linear-gradient(90deg,#B84A6E,#C4762A,#A8901C,#3E8A5A,#4468B8,#8A54B8); }
+  .tL4 .spark { position:absolute; top:24px; right:38px; color:#B08A2E; font-size:1.3rem; }
+
+  .tL5 { --bg:#FFFDF4; --ink:#1E2433; --primary:#2B4C9B; --accent:#2B4C9B; --accent-ink:#FFFFFF; --radius:12px;
+         --display:'Bungee',sans-serif; --display-weight:400; --body:'Source Sans 3',sans-serif;
+         --rainbow:linear-gradient(90deg,#E4572E,#F6C445,#3E8A5A,#2B4C9B,#8A54B8); }
+  .tL5 h2 { letter-spacing:.01em; font-size:clamp(1.3rem,3vw,1.8rem); }
+  .tL5 .cta { border:2.5px solid var(--ink); box-shadow:4px 4px 0 var(--ink); background:#F6C445; color:var(--ink); }
+  .tL5 .chip { border-width:2px; }
+  .tL5::before { content:""; position:absolute; inset:0 0 auto auto; width:180px; height:100%;
+                 background-image:radial-gradient(#1E243318 1.5px, transparent 1.5px); background-size:10px 10px; }
+
+  /* ============ TEMAS ESCUROS ============ */
+
+  .tD1 { --bg:#14242E; --ink:#F1E8D6; --primary:#5FBFA5; --accent:#E8A33D; --accent-ink:#14242E;
+         --display:'Fredoka',sans-serif; --body:'Atkinson Hyperlegible',sans-serif;
+         --rainbow:linear-gradient(90deg,#E07A6B,#E8A33D,#D6C04C,#63B87A,#6FA8DC,#A98BD8); }
+  .tD1::after { content:""; position:absolute; bottom:-60px; left:50%; transform:translateX(-50%);
+                width:420px; height:150px; background:radial-gradient(ellipse at center, #E8A33D2E, transparent 70%); }
+
+  .tD2 { --bg:#201812; --ink:#EEDFC7; --primary:#D9A441; --accent:#D9A441; --accent-ink:#201812; --radius:10px;
+         --display:'Cinzel',serif; --display-weight:700; --body:'Alegreya Sans',sans-serif;
+         --rainbow:linear-gradient(90deg,#C4552F,#D9A441,#C9B23C,#6FA05A,#5D82AE,#9A6FB8); }
+  .tD2 h2 { font-size:clamp(1.35rem,3vw,1.85rem); }
+
+  .tD3 { --bg:#101A2E; --ink:#E4EBF7; --primary:#A08BE8; --accent:#F5C34D; --accent-ink:#101A2E;
+         --display:'Space Grotesk',sans-serif; --display-weight:700; --body:'Inter',sans-serif;
+         --rainbow:linear-gradient(90deg,#E0708A,#F5C34D,#D6C96A,#6FC493,#7BA3E8,#A08BE8); }
+  .tD3 .const { position:absolute; top:24px; right:32px; width:150px; border-top:2px dotted #5A7BD8; }
+  .tD3 .const::before, .tD3 .const::after { content:""; position:absolute; top:-4px; width:6px; height:6px;
+        border-radius:50%; background:#F5C34D; } .tD3 .const::before { left:0; } .tD3 .const::after { right:0; }
+
+  .tD4 { --bg:#151022; --ink:#ECE6F7; --primary:#FF7AC6; --accent:#45D6BE; --accent-ink:#151022; --radius:4px;
+         --display:'Outfit',sans-serif; --display-weight:800; --body:'Karla',sans-serif;
+         --rainbow:linear-gradient(90deg,#FF7AC6,#F5C34D,#45D6BE,#7BA3E8,#B48BFF); }
+  .tD4 .eyebrow { font-family:'Press Start 2P',monospace; font-size:.58rem; letter-spacing:.04em; color:#45D6BE; }
+  .tD4 .cta { box-shadow:0 0 0 2px #151022, 0 0 0 4px #45D6BE; }
+
+  .tD5 { --bg:#121D17; --ink:#E7EFE2; --primary:#C9E265; --accent:#C9E265; --accent-ink:#121D17;
+         --display:'Fraunces',serif; --display-weight:600; --body:'Mulish',sans-serif;
+         --rainbow:linear-gradient(90deg,#D8836E,#E0AC4C,#C9E265,#7BC48F,#6FA8B8,#A390C9); }
+  .tD5 .fly { position:absolute; width:5px; height:5px; border-radius:50%; background:#C9E265; box-shadow:0 0 10px 3px #C9E26555; }
+
+  .footer-note { max-width:880px; margin:36px auto 60px; padding:0 24px; font-size:.85rem; color:#6B675D; }
+</style>
+
+<div class="intro">
+  <h1>Prancheta de temas — 5 claros + 5 escuros</h1>
+  <p>Cada opção mostra o hero real da landing com sua paleta, par tipográfico e tom de texto. O detalhe arco-íris (sublinhado em uma palavra) é o sinal LGBT+ discreto do spec, adaptado a cada paleta. Dá para misturar: paleta de um, fonte de outro, copy de um terceiro.</p>
+</div>
+
+<div class="section-title">☀️ Temas claros</div>
+
+<!-- L1 -->
+<div class="option">
+  <div class="theme tL1">
+    <div class="trail"></div>
+    <div class="eyebrow">Psicoterapia online · TCC e Terapia do Esquema</div>
+    <h2>Toda história de superação começa com um <span class="ra">primeiro passo</span>.</h2>
+    <p class="sub">Atendimento acolhedor para pessoas LGBT+, neurodivergentes, PCD e fãs de cultura pop. Você no papel principal — eu sigo como guia.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Chamar no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>C1 · Mapa do Aventureiro</b><span>O tema do spec: pergaminho, trilha pontilhada, quente e confiável. Funciona dos 12 aos 60.</span></div>
+    <div class="fonts">Fredoka + Atkinson Hyperlegible<em>display cozy + corpo desenhado p/ baixa visão</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#FAF3E3"></i>#FAF3E3</div>
+      <div class="sw"><i style="background:#2C3A34"></i>#2C3A34</div>
+      <div class="sw"><i style="background:#1F6E63"></i>#1F6E63</div>
+      <div class="sw"><i style="background:#E8A33D"></i>#E8A33D</div>
+    </div>
+  </div>
+</div>
+
+<!-- L2 -->
+<div class="option">
+  <div class="theme tL2">
+    <div class="eyebrow">Psicólogo clínico · Atendimento online</div>
+    <h2>Um cantinho seguro para cuidar da <span class="ra">sua história</span>.</h2>
+    <p class="sub">Terapia sem pressa e sem julgamento, para você que é LGBT+, neurodivergente, PCD ou vive de fandom em fandom.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Começar pelo WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>C2 · Vila Cozy</b><span>Stardew Valley: sálvia, folha e amora. Aconchego de fazenda, forte com 25–45.</span></div>
+    <div class="fonts">Baloo 2 + Nunito Sans<em>redondinha e alegre + corpo neutro e macio</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#EFF3E2"></i>#EFF3E2</div>
+      <div class="sw"><i style="background:#37301F"></i>#37301F</div>
+      <div class="sw"><i style="background:#4A6B2A"></i>#4A6B2A</div>
+      <div class="sw"><i style="background:#A63D63"></i>#A63D63</div>
+    </div>
+  </div>
+</div>
+
+<!-- L3 -->
+<div class="option">
+  <div class="theme tL3">
+    <div class="kite">🪁</div>
+    <div class="eyebrow">Psicoterapia online · Para todas as idades</div>
+    <h2>Dias nublados também fazem parte <span class="ra">do mapa</span>.</h2>
+    <p class="sub">Psicoterapia com TCC e Terapia do Esquema, em linguagem simples e ritmo respeitado — para todas as identidades e neurotipos.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Conversar no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>C3 · Céu Aberto</b><span>Ghibli: céu claro, sol e pipa. O mais sereno dos claros — quase clínico, mas com alma.</span></div>
+    <div class="fonts">Quicksand + Figtree<em>arredondada leve + corpo geométrico limpo</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#E8F2F7"></i>#E8F2F7</div>
+      <div class="sw"><i style="background:#1F3345"></i>#1F3345</div>
+      <div class="sw"><i style="background:#2A6E9E"></i>#2A6E9E</div>
+      <div class="sw"><i style="background:#D98A24"></i>#D98A24</div>
+    </div>
+  </div>
+</div>
+
+<!-- L4 -->
+<div class="option">
+  <div class="theme tL4">
+    <div class="spark">✦</div>
+    <div class="eyebrow">Psicoterapia online · TCC e Terapia do Esquema</div>
+    <h2>Entender a própria mente é o feitiço mais <span class="ra">poderoso</span>.</h2>
+    <p class="sub">Um espaço seguro (e um pouco mágico) para pessoas LGBT+, neurodivergentes, PCD e fãs de outros mundos.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Enviar mensagem no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>C4 · Grimório Gentil</b><span>Fantasia suave: lilás, violeta e ouro. Místico sem ser esotérico; queer-friendly por natureza.</span></div>
+    <div class="fonts">Comfortaa + Lexend<em>display circular + corpo desenhado p/ fluência de leitura</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#F4EFFA"></i>#F4EFFA</div>
+      <div class="sw"><i style="background:#33254A"></i>#33254A</div>
+      <div class="sw"><i style="background:#6B4FA3"></i>#6B4FA3</div>
+      <div class="sw"><i style="background:#B08A2E"></i>#B08A2E</div>
+    </div>
+  </div>
+</div>
+
+<!-- L5 -->
+<div class="option">
+  <div class="theme tL5">
+    <div class="eyebrow">Psicoterapia online · TCC e Terapia do Esquema</div>
+    <h2>Até quem salva o mundo precisa <span class="ra">de apoio</span>.</h2>
+    <p class="sub">Terapia direta, sem enrolação: TCC e Terapia do Esquema para heróis de todas as origens — dos 12 aos 60.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Chamar no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>C5 · Banca de Quadrinhos</b><span>HQ: papel, tinta, retícula e bordas grossas. O mais enérgico dos claros; risco de parecer menos sério p/ 50+.</span></div>
+    <div class="fonts">Bungee + Source Sans 3<em>display de letreiro + corpo jornalístico legível</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#FFFDF4"></i>#FFFDF4</div>
+      <div class="sw"><i style="background:#1E2433"></i>#1E2433</div>
+      <div class="sw"><i style="background:#2B4C9B"></i>#2B4C9B</div>
+      <div class="sw"><i style="background:#F6C445"></i>#F6C445</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">🌙 Temas escuros</div>
+
+<!-- D1 -->
+<div class="option">
+  <div class="theme tD1">
+    <div class="eyebrow">Psicoterapia online · TCC e Terapia do Esquema</div>
+    <h2>Uma fogueira acesa para quando a noite <span class="ra">pesar</span>.</h2>
+    <p class="sub">Atendimento online, acolhedor e previsível — para pessoas LGBT+, neurodivergentes, PCD e de todos os fandoms.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Chamar no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>E1 · Fogueira de Acampamento</b><span>Par natural do C1: noite azul, luz de fogueira. O modo escuro "oficial" do spec.</span></div>
+    <div class="fonts">Fredoka + Atkinson Hyperlegible<em>mesmo par do C1 — sistema claro/escuro coeso</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#14242E"></i>#14242E</div>
+      <div class="sw"><i style="background:#F1E8D6"></i>#F1E8D6</div>
+      <div class="sw"><i style="background:#5FBFA5"></i>#5FBFA5</div>
+      <div class="sw"><i style="background:#E8A33D"></i>#E8A33D</div>
+    </div>
+  </div>
+</div>
+
+<!-- D2 -->
+<div class="option">
+  <div class="theme tD2">
+    <div class="eyebrow">Psicoterapia online · TCC e Terapia do Esquema</div>
+    <h2>Toda longa jornada merece uma pausa <span class="ra">na taverna</span>.</h2>
+    <p class="sub">Senta, respira, conta a tua história. TCC e Terapia do Esquema para aventureiros do mundo real.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Mandar mensagem no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>E2 · Taverna do Aventureiro</b><span>RPG de mesa: madeira escura, vela e brasa. Forte com o público D&D 28–50; o mais "adulto".</span></div>
+    <div class="fonts">Cinzel + Alegreya Sans<em>lapidar de fantasia + corpo humanista quente</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#201812"></i>#201812</div>
+      <div class="sw"><i style="background:#EEDFC7"></i>#EEDFC7</div>
+      <div class="sw"><i style="background:#D9A441"></i>#D9A441</div>
+      <div class="sw"><i style="background:#C4552F"></i>#C4552F</div>
+    </div>
+  </div>
+</div>
+
+<!-- D3 -->
+<div class="option">
+  <div class="theme tD3">
+    <div class="const"></div>
+    <div class="eyebrow">Psicoterapia online · Baseada em evidências</div>
+    <h2>Explorar a própria mente é a maior das <span class="ra">viagens</span>.</h2>
+    <p class="sub">Psicoterapia com espaço para todas as constelações: LGBT+, neurodivergências, deficiências e paixões nerds.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Conversar no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>E3 · Observatório</b><span>Céu estrelado: constelações ligam os públicos. Sci-fi contemplativo, unissex, funciona 12–60.</span></div>
+    <div class="fonts">Space Grotesk + Inter<em>display técnico-charmoso + corpo neutro sólido</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#101A2E"></i>#101A2E</div>
+      <div class="sw"><i style="background:#E4EBF7"></i>#E4EBF7</div>
+      <div class="sw"><i style="background:#A08BE8"></i>#A08BE8</div>
+      <div class="sw"><i style="background:#F5C34D"></i>#F5C34D</div>
+    </div>
+  </div>
+</div>
+
+<!-- D4 -->
+<div class="option">
+  <div class="theme tD4">
+    <div class="eyebrow">Save point encontrado</div>
+    <h2>Sua próxima fase não precisa ser no <span class="ra">modo difícil</span>.</h2>
+    <p class="sub">Terapia online com TCC e Terapia do Esquema — um checkpoint seguro para recuperar HP, sem julgamento.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Chamar no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>E4 · Arcade Noturno</b><span>Neon suave + micro-doses de pixel (só no eyebrow). O mais gamer de todos; forte 12–30, arriscado 50+.</span></div>
+    <div class="fonts">Outfit + Karla (+ Press Start 2P em detalhes)<em>display geométrico bold + corpo amigável</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#151022"></i>#151022</div>
+      <div class="sw"><i style="background:#ECE6F7"></i>#ECE6F7</div>
+      <div class="sw"><i style="background:#45D6BE"></i>#45D6BE</div>
+      <div class="sw"><i style="background:#FF7AC6"></i>#FF7AC6</div>
+    </div>
+  </div>
+</div>
+
+<!-- D5 -->
+<div class="option">
+  <div class="theme tD5">
+    <span class="fly" style="top:22%; right:12%"></span>
+    <span class="fly" style="top:48%; right:6%"></span>
+    <span class="fly" style="top:30%; right:22%"></span>
+    <div class="eyebrow">Psicoterapia online · TCC e Terapia do Esquema</div>
+    <h2>Mesmo na noite mais escura existem <span class="ra">vagalumes</span>.</h2>
+    <p class="sub">Psicoterapia gentil e sem pressa, para quem carrega o peso do mundo — e para quem só quer entender o próprio mapa.</p>
+    <div class="chips"><span class="chip">LGBT+</span><span class="chip">Neurodivergências</span><span class="chip">PCD</span><span class="chip">Cultura pop</span></div>
+    <div class="cta-row"><button class="cta">Conversar no WhatsApp</button><span class="alt">Instagram · E-mail</span></div>
+    <div class="crp">Nome Sobrenome · CRP 00/000000</div>
+  </div>
+  <div class="meta">
+    <div class="name"><b>E5 · Floresta de Vagalumes</b><span>Musgo, lanterna e vagalumes. O mais poético e sereno dos escuros; abraça sem infantilizar.</span></div>
+    <div class="fonts">Fraunces + Mulish<em>serifada macia com personalidade + corpo discreto</em></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:#121D17"></i>#121D17</div>
+      <div class="sw"><i style="background:#E7EFE2"></i>#E7EFE2</div>
+      <div class="sw"><i style="background:#C9E265"></i>#C9E265</div>
+      <div class="sw"><i style="background:#E0AC4C"></i>#E0AC4C</div>
+    </div>
+  </div>
+</div>
+
+<p class="footer-note">Todas as combinações texto/fundo foram escolhidas mirando WCAG AA (validação final com ferramenta na implementação). O site terá um tema claro + um escuro; escolha um de cada — ou peça variações e misturas.</p>
